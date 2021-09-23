@@ -1,11 +1,19 @@
 package com.github.nvgrig.todo.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 
+    @Column(name = "login", nullable = false, unique = true)
     private String login;
 
+    @Column(name = "password", nullable = false)
     private String password;
 
     public User() {

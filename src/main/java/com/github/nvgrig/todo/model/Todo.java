@@ -1,14 +1,23 @@
 package com.github.nvgrig.todo.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "todo")
 public class Todo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 
+    @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "is_completed", nullable = false)
     private Boolean isCompleted;
 
+    @Column(name = "creation_date", nullable = false)
     private LocalDate creationDate;
 
     public Todo() {
