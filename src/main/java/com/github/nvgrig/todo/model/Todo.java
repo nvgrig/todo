@@ -1,5 +1,8 @@
 package com.github.nvgrig.todo.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -19,6 +22,11 @@ public class Todo {
 
     @Column(name = "creation_date", nullable = false)
     private LocalDate creationDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
 
     public Todo() {
     }

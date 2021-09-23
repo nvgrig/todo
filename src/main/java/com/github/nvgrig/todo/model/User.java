@@ -1,6 +1,10 @@
 package com.github.nvgrig.todo.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -15,6 +19,10 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Todo> todoList;
 
     public User() {
     }
