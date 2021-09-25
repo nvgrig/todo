@@ -11,13 +11,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = RestUserController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class RestUserController {
+@RequestMapping(value = UserRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class UserRestController {
     static final String REST_URL = "/rest/profile";
 
     private final UserService service;
 
-    public RestUserController(UserService service) {
+    public UserRestController(UserService service) {
         this.service = service;
     }
 

@@ -2,10 +2,12 @@ package com.github.nvgrig.todo.service;
 
 import com.github.nvgrig.todo.model.Todo;
 import com.github.nvgrig.todo.repository.TodoRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.List;
 
+@Service
 public class TodoService {
     private TodoRepository repository;
 
@@ -36,7 +38,7 @@ public class TodoService {
         repository.save(todo);
     }
 
-    public List<Todo> getAllNotCompleted(int userId, boolean isCompleted) {
-        return repository.getAllNotCompleted(userId, isCompleted);
+    public List<Todo> getAllNotCompleted(int userId) {
+        return repository.getAllNotCompleted(userId, false);
     }
 }
