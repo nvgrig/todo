@@ -21,8 +21,8 @@ public class UserRestController {
         this.service = service;
     }
 
-    @GetMapping
-    public User get(int id) {
+    @GetMapping("/{id}")
+    public User get(@PathVariable int id) {
         return service.get(id);
     }
 
