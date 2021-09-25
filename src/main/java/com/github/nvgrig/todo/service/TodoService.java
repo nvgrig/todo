@@ -2,6 +2,7 @@ package com.github.nvgrig.todo.service;
 
 import com.github.nvgrig.todo.model.Todo;
 import com.github.nvgrig.todo.repository.TodoRepository;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -13,7 +14,8 @@ public class TodoService {
     }
 
     public Todo create(Todo todo) {
-        return null;
+        Assert.notNull(todo, "todo must not be null");
+        return repository.save(todo);
     }
 
     public Todo createLinkedTodo(Todo todo) {
@@ -21,16 +23,20 @@ public class TodoService {
     }
 
     public void delete(int id) {
+        repository.delete(id);
     }
 
     public Todo get(int id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
-    public void complete(int id) {
+    public void complete(int id, boolean isCompleted) {
+        Todo todo = repository.getById(id);
+        todo.setCompleted(isCompleted);
+        repository.save(todo);
     }
 
-    public List<Todo> getAllNotCompleted() {
-        return null;
+    public List<Todo> getAllNotCompleted(int userId, boolean isCompleted) {
+        return repository.getAllNotCompleted(userId, isCompleted);
     }
 }
