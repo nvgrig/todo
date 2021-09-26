@@ -1,5 +1,5 @@
 INSERT INTO users (login, password)
-VALUES ('user', 'password');
+VALUES ('user', '{noop}password');
 
 INSERT INTO todo (description, is_completed, creation_date, user_id)
 VALUES ('buy milk', 'false', '2021-09-23', '1'),

@@ -2,6 +2,7 @@ package com.github.nvgrig.todo.controller;
 
 import com.github.nvgrig.todo.model.Todo;
 import com.github.nvgrig.todo.service.TodoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = TodoRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@Tag(name = "Todo Controller")
 public class TodoRestController {
-    static final String REST_URL = "/rest/profile/todos";
+    static final String REST_URL = "/api/profile/todos";
 
     private final TodoService service;
 
