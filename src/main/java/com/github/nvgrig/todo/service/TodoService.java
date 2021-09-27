@@ -24,16 +24,12 @@ public class TodoService {
         return null;
     }
 
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
     public Todo get(int id) {
         return repository.findById(id).orElse(null);
     }
 
     public void complete(int id, boolean isCompleted) {
-        Todo todo = repository.getById(id);
+        Todo todo = get(id);
         todo.setCompleted(isCompleted);
         repository.save(todo);
     }

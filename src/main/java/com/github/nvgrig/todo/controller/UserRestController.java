@@ -25,8 +25,8 @@ public class UserRestController {
     }
 
     @GetMapping()
-    public User get(@AuthenticationPrincipal AuthUser authUser) {
-        return authUser.getUser();
+    public User getWithTodos(@AuthenticationPrincipal AuthUser authUser) {
+        return service.getWithTodos(authUser.id());
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -36,10 +36,5 @@ public class UserRestController {
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL).build().toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
-    }
-
-    @GetMapping("/with-todos")
-    public User getWithTodos(@AuthenticationPrincipal AuthUser authUser) {
-        return service.getWithTodos(authUser.id());
     }
 }

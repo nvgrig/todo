@@ -19,16 +19,7 @@ public class UserService {
         return repository.save(user);
     }
 
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    public User get(int id) {
-        return repository.findById(id).orElse(null);
-    }
-
     public User getWithTodos(int id) {
         return repository.getWithTodos(id);
     }
-
 }

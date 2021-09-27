@@ -1,5 +1,6 @@
 package com.github.nvgrig.todo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -22,7 +23,8 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Todo> todoList;
+    @JsonManagedReference
+    private List<Todo> todos;
 
     public User() {
     }
